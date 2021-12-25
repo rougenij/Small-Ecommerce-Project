@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import HomePage from "./components/Pages/Homepage/HomePage";
+import GameDisplayPage from "./components/Pages/Item/GameDisplayPage";
+// import GameDetailsPage from "./components/Pages/Item/GameDetailsPage";
+// import Cart from "./components/Pages/Cart/Cart";
+// import NotFound from "./components/Pages/NotFound/NotFound";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/games" exact component={GameDisplayPage} />
+            {/* <Route path="/games/:id" exact component={GameDetailsPage} /> */}
+            {/* <Route path="/cart" exact component={Cart} /> */}
+            {/* <Route component={NotFound} /> */}
+          </Switch>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;
